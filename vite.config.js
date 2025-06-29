@@ -12,5 +12,24 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+    hmr: {
+      overlay: true
+    }
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          api: ['./src/lib/api.js']
+        }
+      }
+    }
+  },
+  optimizeDeps: {
+    include: ['src/lib/api.js'],
+    force: true
+  },
+  define: {
+    __BUILD_TIME__: JSON.stringify(new Date().toISOString())
+  }
 }) 

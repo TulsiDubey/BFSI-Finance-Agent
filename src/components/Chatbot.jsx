@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Bot, User, Brain, Lightbulb, TrendingUp, Shield, BookOpen } from "lucide-react";
-import { chatAPI } from "../lib/api";
+import { api } from "../lib/api";
 import { useAuth } from "../contexts/UserContext";
 import toast from "react-hot-toast";
 
@@ -74,18 +74,18 @@ const Chatbot = ({ onClose, initialQuestion = '' }) => {
       
       console.log("API payload:", payload);
       
-      const response = await chatAPI.sendMessage(textToSend, {
+      const response = await api.chat(textToSend, {
         conversationHistory: payload.history,
         userProfile: payload.user_profile
       });
       
       console.log("API response:", response);
       
-      if (!response.data || !response.data.response) {
+      if (!response.response) {
         throw new Error('Invalid response from server');
       }
       
-      const botResponse = response.data.response;
+      const botResponse = response.response;
       
       setMessages((msgs) => [
         ...msgs,
@@ -93,7 +93,7 @@ const Chatbot = ({ onClose, initialQuestion = '' }) => {
           sender: "bot", 
           text: botResponse,
           type: "response",
-          suggestions: response.data.suggestions || []
+          suggestions: response.suggestions || []
         },
       ]);
 

@@ -18,7 +18,7 @@ import {
   Loader2
 } from 'lucide-react';
 import { useAuth } from '../contexts/UserContext';
-import { investmentSecurityAPI } from '../lib/api';
+import { api } from '../lib/api';
 import toast from 'react-hot-toast';
 
 const SecurityUpload = () => {
@@ -208,13 +208,13 @@ const SecurityUpload = () => {
     setAnalyzingInvestment(true);
 
     try {
-      const response = await investmentSecurityAPI.analyzeInvestmentSecurity(
+      const response = await api.analyzeInvestmentSecurity(
         investmentDetails,
         userProfile
       );
 
-      if (response.data) {
-        setInvestmentAnalysis(response.data);
+      if (response) {
+        setInvestmentAnalysis(response);
         toast.success('Investment security analysis completed!');
       }
     } catch (error) {

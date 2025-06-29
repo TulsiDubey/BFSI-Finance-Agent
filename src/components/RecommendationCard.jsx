@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TrendingUp, DollarSign, Calendar, Target, ArrowRight, ChevronDown, ChevronUp, Star, Shield, Zap, CheckCircle, X, Loader2, AlertTriangle, BarChart3, PieChart, TrendingDown, Award, Clock, Users, FileText, Search, AlertCircle, CheckSquare, XCircle } from 'lucide-react';
 import { useAuth } from '../contexts/UserContext';
-import { recommendationAPI, investmentSecurityAPI } from '../lib/api';
+import { api } from '../lib/api';
 import toast from 'react-hot-toast';
 
 const RecommendationCard = () => {
@@ -16,6 +16,16 @@ const RecommendationCard = () => {
   const [securityAnalysis, setSecurityAnalysis] = useState(null);
   const [analyzingSecurity, setAnalyzingSecurity] = useState(false);
   const [selectedInvestment, setSelectedInvestment] = useState(null);
+
+  // Test API import on component mount
+  useEffect(() => {
+    try {
+      console.log('API test:', api.test());
+      console.log('API baseURL:', api.baseURL);
+    } catch (error) {
+      console.error('API import error:', error);
+    }
+  }, []);
 
   // Default investment schemes if no recommendations provided
   const defaultSchemes = [
@@ -197,10 +207,10 @@ const RecommendationCard = () => {
     setError('');
 
     try {
-      const response = await recommendationAPI.getRecommendations(userProfile);
-      if (response.data && response.data.recommendations && response.data.recommendations.length > 0) {
+      const response = await api.getRecommendations(userProfile);
+      if (response && response.recommendations && response.recommendations.length > 0) {
         // Transform backend recommendations to match our scheme format
-        const transformedRecommendations = response.data.recommendations.map((rec, index) => ({
+        const transformedRecommendations = response.recommendations.map((rec, index) => ({
           id: `rec-${index}`,
           name: rec.title,
           category: rec.type,
@@ -502,13 +512,13 @@ const RecommendationCard = () => {
         category: investment.category
       };
 
-      const response = await investmentSecurityAPI.analyzeInvestmentSecurity(
+      const response = await api.analyzeInvestmentSecurity(
         investmentDetails,
         userProfile
       );
 
-      if (response.data) {
-        setSecurityAnalysis(response.data);
+      if (response) {
+        setSecurityAnalysis(response);
         toast.success('Security analysis completed!');
       }
     } catch (error) {

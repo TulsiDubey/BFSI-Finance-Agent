@@ -1,10 +1,15 @@
-// API configuration
+// API configuration - Version 2.0
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 // API utility functions
-export const api = {
+const api = {
     // Base URL for all API calls
     baseURL: API_BASE_URL,
+    
+    // Test function to verify module is working
+    test() {
+        return 'API module is working correctly!';
+    },
     
     // Generic request function
     async request(endpoint, options = {}) {
@@ -114,4 +119,28 @@ export const api = {
     },
 };
 
-export default api; 
+// Export both named and default exports
+export { api };
+export default api;
+
+// Also export individual functions for backward compatibility if needed
+export const chatAPI = {
+    sendMessage: api.chat.bind(api)
+};
+
+export const fraudAPI = {
+    detectFraud: api.detectFraud.bind(api)
+};
+
+export const recommendationAPI = {
+    getRecommendations: api.getRecommendations.bind(api)
+};
+
+export const investmentSecurityAPI = {
+    analyzeInvestmentSecurity: api.analyzeInvestmentSecurity.bind(api)
+};
+
+export const claimAPI = {
+    submitClaim: api.submitClaim.bind(api),
+    analyzeDocuments: api.analyzeSecurity.bind(api)
+}; 

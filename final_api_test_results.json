@@ -1,0 +1,351 @@
+[
+  {
+    "endpoint": "/api/health",
+    "method": "GET",
+    "description": "Health Check - Verify API is running",
+    "status_code": 200,
+    "expected_status": 200,
+    "success": true,
+    "response_time": 2.091867685317993,
+    "timestamp": "2025-06-29T19:17:35.808041",
+    "response_data": {
+      "services": {
+        "gemini": false,
+        "ollama": true
+      },
+      "status": "healthy",
+      "timestamp": "2025-06-29T19:17:35.800535"
+    }
+  },
+  {
+    "endpoint": "/",
+    "method": "GET",
+    "description": "Root Endpoint - Basic health check",
+    "status_code": 404,
+    "expected_status": 200,
+    "success": false,
+    "response_time": 2.037146806716919,
+    "timestamp": "2025-06-29T19:17:37.846063",
+    "response_data": {
+      "error": "Endpoint not found"
+    }
+  },
+  {
+    "endpoint": "/api/chat",
+    "method": "POST",
+    "description": "AI Chat - Financial advisory with context",
+    "status_code": 200,
+    "expected_status": 200,
+    "success": true,
+    "response_time": 4.086575508117676,
+    "timestamp": "2025-06-29T19:17:41.935753",
+    "response_data": {
+      "fraud_analysis": null,
+      "response": "SIP (Systematic Investment Plan) is a disciplined approach to investing where you invest a fixed amount regularly in mutual funds.\n\n**Key Benefits:**\n- **Rupee Cost Averaging**: Buy more units when prices are low\n- **Power of Compounding**: Long-term wealth creation\n- **Discipline**: Regular investing habit\n- **Affordability**: Start with as little as \u20b9500/month\n\n**How to Start:**\n1. Choose a diversified equity fund (e.g., Nifty 50 index fund)\n2. Start with \u20b91000-2000 monthly\n3. Increase amount gradually\n4. Stay invested for 5+ years\n\n**Example**: \u20b92000/month SIP for 10 years at 12% return = \u20b94.5 lakhs invested, \u20b99.2 lakhs value\n\n**Risk**: Market fluctuations, but long-term returns are generally positive.",
+      "timestamp": "2025-06-29T19:17:41.933465"
+    }
+  },
+  {
+    "endpoint": "/api/faq",
+    "method": "GET",
+    "description": "FAQ Generation - AI-powered questions and answers",
+    "status_code": 200,
+    "expected_status": 200,
+    "success": true,
+    "response_time": 4.072699069976807,
+    "timestamp": "2025-06-29T19:17:46.009557",
+    "response_data": {
+      "faqs": [
+        {
+          "answer": "SIP (Systematic Investment Plan) is a disciplined approach to investing where you invest a fixed amount regularly in mutual funds. Start with \u20b9500-1000 monthly, choose diversified equity funds, and stay invested for long term.",
+          "category": "Investment",
+          "question": "What is SIP investment and how should I start?"
+        },
+        {
+          "answer": "Aim for coverage of 10-15 times your annual income. Consider your family's needs, existing savings, and future goals. Term insurance is most cost-effective for pure protection.",
+          "category": "Insurance",
+          "question": "How much life insurance coverage do I need?"
+        },
+        {
+          "answer": "Watch for unsolicited calls asking for OTP, promises of unrealistic returns, pressure to act quickly, and requests for personal banking details. Always verify through official channels.",
+          "category": "Fraud Prevention",
+          "question": "How can I identify financial fraud?"
+        }
+      ]
+    }
+  },
+  {
+    "endpoint": "/api/fraud/detect",
+    "method": "POST",
+    "description": "Fraud Detection - Insurance claim analysis",
+    "status_code": 200,
+    "expected_status": 200,
+    "success": true,
+    "response_time": 4.11177134513855,
+    "timestamp": "2025-06-29T19:17:50.123590",
+    "response_data": {
+      "confidence": "medium",
+      "fraud_score": 15,
+      "indicators": [
+        "Amount analysis",
+        "Document review needed"
+      ],
+      "recommendations": [
+        "Verify documents",
+        "Check claim history"
+      ],
+      "risk_level": "low"
+    }
+  },
+  {
+    "endpoint": "/api/financial/analyze",
+    "method": "POST",
+    "description": "Financial Analysis - Health assessment and recommendations",
+    "status_code": 200,
+    "expected_status": 200,
+    "success": true,
+    "response_time": 2.0174431800842285,
+    "timestamp": "2025-06-29T19:17:52.143940",
+    "response_data": {
+      "financial_health": {
+        "ratios": {
+          "debt_to_income": 66.67,
+          "emergency_ratio": 0.0,
+          "savings_rate": 26.67
+        },
+        "risk_level": "high",
+        "score": 30
+      },
+      "recommendations": [
+        "Build emergency fund to 6 months of expenses",
+        "Reduce debt-to-income ratio below 20%",
+        "Increase savings rate to 20% of income",
+        "Diversify investments across asset classes"
+      ]
+    }
+  },
+  {
+    "endpoint": "/api/claims/submit",
+    "method": "POST",
+    "description": "Insurance Claims - Submit and monitor claims",
+    "status_code": 200,
+    "expected_status": 200,
+    "success": true,
+    "response_time": 2.072120189666748,
+    "timestamp": "2025-06-29T19:17:54.217201",
+    "response_data": {
+      "claim_id": "CLM20250629191754",
+      "message": "Claim submitted successfully",
+      "monitoring_status": {
+        "claim_id": "CLM20250629191754",
+        "current_stage": "document_review",
+        "documents_received": 0,
+        "estimated_processing_time": "5-7 business days",
+        "status": "submitted",
+        "submitted_at": "2025-06-29T19:17:54.213267"
+      },
+      "success": true
+    }
+  },
+  {
+    "endpoint": "/api/security/analyze",
+    "method": "POST",
+    "description": "Security Analysis - Document security assessment",
+    "status_code": 200,
+    "expected_status": 200,
+    "success": true,
+    "response_time": 2.0593607425689697,
+    "timestamp": "2025-06-29T19:17:56.278923",
+    "response_data": {
+      "analysis_results": [
+        {
+          "extension": "txt",
+          "filename": "test_document.txt",
+          "risk_factors": [
+            "File size is suspiciously small"
+          ],
+          "risk_score": 2,
+          "security_issues": [],
+          "size": 46,
+          "status": "safe",
+          "type": "text/plain",
+          "uploaded_at": "2025-06-29T19:17:56.276564"
+        }
+      ],
+      "files_analyzed": 1,
+      "security_analysis": {
+        "compliance_check": {
+          "file_types_allowed": true,
+          "recommendations": [
+            "Ensure all files are from trusted sources",
+            "Regular security audits recommended",
+            "Implement file scanning procedures"
+          ],
+          "security_standards_met": true,
+          "size_limits_respected": true
+        },
+        "financial_health": {
+          "assessment": "Financial security assessment based on 1 analyzed files",
+          "risk_indicators": 0,
+          "safety_score": 70.0,
+          "score": 80.0
+        },
+        "fraud_analysis": {
+          "confidence": "high",
+          "overall_risk_score": 2.0,
+          "recommendations": [
+            "Files appear to be safe for processing",
+            "Continue with normal document processing",
+            "Maintain regular security monitoring"
+          ],
+          "risk_factors": [
+            "File size is suspiciously small"
+          ],
+          "risk_level": "low",
+          "security_issues": [],
+          "total_files_analyzed": 1
+        }
+      },
+      "success": true,
+      "timestamp": "2025-06-29T19:17:56.276680"
+    }
+  },
+  {
+    "endpoint": "/api/policies/underwriting",
+    "method": "POST",
+    "description": "Policy Underwriting - Risk assessment and approval",
+    "status_code": 200,
+    "expected_status": 200,
+    "success": true,
+    "response_time": 4.0602240562438965,
+    "timestamp": "2025-06-29T19:18:00.344476",
+    "response_data": {
+      "timestamp": "2025-06-29T19:18:00.341880",
+      "underwriting_result": {
+        "ai_analysis": [
+          "Age factor considered",
+          "Coverage amount appropriate"
+        ],
+        "coverage_approved": true,
+        "premium_rate": 0.5,
+        "recommendations": [
+          "Standard underwriting approved"
+        ],
+        "risk_assessment": "low"
+      }
+    }
+  },
+  {
+    "endpoint": "/api/policies",
+    "method": "POST",
+    "description": "Add Policy - Create new insurance policy",
+    "status_code": 200,
+    "expected_status": 200,
+    "success": true,
+    "response_time": 2.0470993518829346,
+    "timestamp": "2025-06-29T19:18:02.393009",
+    "response_data": {
+      "message": "Policy added successfully",
+      "policy": {
+        "coverage_amount": 1500000,
+        "created_at": "2025-06-29T19:18:02.391453",
+        "id": "POL20250629191802",
+        "status": "active",
+        "term": 20,
+        "type": "term_insurance"
+      },
+      "success": true
+    }
+  },
+  {
+    "endpoint": "/api/recommendations",
+    "method": "POST",
+    "description": "Recommendations - Personalized financial advice",
+    "status_code": 200,
+    "expected_status": 200,
+    "success": true,
+    "response_time": 2.0429322719573975,
+    "timestamp": "2025-06-29T19:18:04.437501",
+    "response_data": {
+      "generated_at": "2025-06-29T19:18:04.435991",
+      "recommendations": [
+        {
+          "description": "Begin SIP investment to benefit from compounding",
+          "priority": "high",
+          "title": "Start SIP Early",
+          "type": "investment"
+        }
+      ]
+    }
+  },
+  {
+    "endpoint": "/api/investment/security-analysis",
+    "method": "POST",
+    "description": "Investment Security - Risk assessment and safety analysis",
+    "status_code": 200,
+    "expected_status": 200,
+    "success": true,
+    "response_time": 2.053999185562134,
+    "timestamp": "2025-06-29T19:18:06.494117",
+    "response_data": {
+      "comparison_analysis": {
+        "vs_alternatives": "Consider lower-risk alternatives if risk tolerance is conservative",
+        "vs_goals": "Ensure investment timeline matches financial goals",
+        "vs_market_conditions": "Current market conditions may affect investment performance",
+        "vs_risk_tolerance": "Investment risk (very high) differs from user tolerance (moderate)"
+      },
+      "detailed_recommendations": [
+        "Start with \u20b950000 if new to mutual_fund",
+        "Build emergency fund of 6 months expenses first",
+        "Consider SIP approach for equity investments",
+        "Review investment every 6 months",
+        "Consult financial advisor for large amounts"
+      ],
+      "investment_summary": {
+        "amount": "\u20b9100,000.00",
+        "duration": "5_years",
+        "expected_return": "12_percent",
+        "type": "mutual_fund",
+        "user_risk_tolerance": "moderate"
+      },
+      "metadata": {
+        "ai_model_used": "enhanced_algorithm",
+        "analysis_timestamp": "2025-06-29T19:18:06.492159",
+        "investment_analyzed": "mutual_fund",
+        "risk_calculation_method": "comprehensive_multi_factor",
+        "user_profile_considered": true
+      },
+      "risk_assessment": {
+        "confidence_level": "high",
+        "overall_risk_score": 10,
+        "recommendation": "Not Suitable",
+        "risk_level": "very high",
+        "suitability_score": 3
+      },
+      "risk_factors": [
+        "Investment type (mutual_fund): Unknown investment type",
+        "Investment amount (12.5% of income) is moderate",
+        "Investment duration: Duration not specified",
+        "Investment experience level: beginner",
+        "Low savings ratio indicates financial vulnerability"
+      ],
+      "risk_mitigation": [
+        "Diversify across multiple investment types",
+        "Start with smaller amounts and increase gradually",
+        "Set up emergency fund before investing",
+        "Consider professional financial advice",
+        "Regular review and rebalancing of portfolio",
+        "Consider lower-risk alternatives",
+        "Ensure adequate insurance coverage",
+        "Focus on debt reduction first",
+        "Build emergency fund of 6+ months expenses"
+      ],
+      "user_profile_analysis": {
+        "age_factor": "Age 35 suggests long-term investment horizon",
+        "experience_factor": "Investment experience (beginner) may limit this investment",
+        "goal_alignment": "Investment needs goal clarification financial objectives",
+        "income_factor": "Income level supports this investment amount"
+      }
+    }
+  }
+]

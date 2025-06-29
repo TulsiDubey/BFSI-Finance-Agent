@@ -34,7 +34,7 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { useAuth } from '../contexts/UserContext';
-import { claimAPI } from '../lib/api';
+import { api } from '../lib/api';
 import toast from 'react-hot-toast';
 
 const InsuranceClaim = () => {
@@ -240,11 +240,11 @@ const InsuranceClaim = () => {
         }
       });
 
-      const response = await claimAPI.submitClaim(formData);
+      const response = await api.submitClaim(formData);
       
-      if (response.data.success) {
-        setClaimStatus(response.data);
-        setMonitoringStatus(response.data.monitoring_status);
+      if (response.success) {
+        setClaimStatus(response);
+        setMonitoringStatus(response.monitoring_status);
         setCurrentStep(4);
         toast.success('Claim submitted successfully!');
       } else {
@@ -275,10 +275,10 @@ const InsuranceClaim = () => {
       });
       formData.append('claimType', claimData.claimType);
 
-      const response = await claimAPI.analyzeDocuments(formData);
+      const response = await api.analyzeSecurity(formData);
       
-      if (response.data) {
-        setAnalysis(response.data);
+      if (response) {
+        setAnalysis(response);
         setCurrentStep(3);
         toast.success('Document analysis completed!');
       }

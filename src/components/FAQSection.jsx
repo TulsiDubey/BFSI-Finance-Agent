@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp, HelpCircle, Search, BookOpen, Shield, TrendingUp, DollarSign, Target, Clock, Star, MessageCircle, ThumbsUp, Bot } from "lucide-react";
-import { chatAPI } from "../lib/api";
+import { api } from "../lib/api";
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { useAuth } from '../contexts/UserContext';
@@ -235,8 +235,20 @@ const FAQSection = () => {
   ];
 
   useEffect(() => {
-    setFaqs(faqData);
-    setLoading(false);
+    const fetchFAQ = async () => {
+      try {
+        const data = await api.getFAQ();
+        setFaqs(data);
+      } catch (error) {
+        console.error('Error fetching FAQ:', error);
+        // Fallback to default FAQ data if API fails
+        setFaqs(faqData);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchFAQ();
   }, []);
 
   const toggleFaq = (faqId) => {

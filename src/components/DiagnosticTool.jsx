@@ -41,7 +41,8 @@ const DiagnosticTool = () => {
 
       // Check API Connection
       try {
-        const response = await fetch('http://localhost:5000/api/health');
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const response = await fetch(`${apiUrl}/api/health`);
         results.api.status = response.status;
         results.api.connected = response.ok ? 'Connected' : 'Not connected';
       } catch (error) {

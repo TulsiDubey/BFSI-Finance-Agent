@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ShieldAlert, AlertTriangle, Loader2 } from "lucide-react";
+import { Shield, AlertTriangle, CheckCircle, X, Loader2 } from "lucide-react";
 import { useAuth } from "../contexts/UserContext";
-import { fraudAPI } from "../lib/api";
+import { api } from "../lib/api";
 
 const FraudAlertCard = () => {
   const { userProfile } = useAuth();
@@ -19,9 +19,9 @@ const FraudAlertCard = () => {
   const fetchFraudStatus = async () => {
     setLoading(true);
     try {
-      const res = await fraudAPI.detectFraud(userProfile);
-      setFraudStatus(res.data.status || res.data.risk_level || "Low");
-      setTips(res.data.tips || res.data.recommendations || [
+      const res = await api.detectFraud(userProfile);
+      setFraudStatus(res.status || res.risk_level || "Low");
+      setTips(res.tips || res.recommendations || [
         "Never share OTPs or passwords.",
         "Verify links before clicking.",
         "Check for RBI/IRDAI registration of financial companies.",
@@ -48,7 +48,7 @@ const FraudAlertCard = () => {
     >
       <div className="flex items-center space-x-3 mb-4">
         <div className="p-3 bg-green-100 rounded-lg text-green-600">
-          <ShieldAlert className="h-6 w-6" />
+          <Shield className="h-6 w-6" />
         </div>
         <h2 className="text-2xl font-bold text-gray-900">Fraud Detection & Alerts</h2>
       </div>
