@@ -1,21 +1,50 @@
 services:
+  # Backend API Service
   - type: web
-    name: bfsi-financial-platform
+    name: bfsi-backend
     env: python
     plan: free
     buildCommand: |
-      pip install -r backend/requirements.txt
-    startCommand: bash start.sh
+      cd backend
+      pip install -r requirements.txt
+    startCommand: |
+      cd backend
+      gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
-      - key: PORT
-        value: 10000
       - key: GEMINI_API_KEY
         sync: false
       - key: OLLAMA_BASE_URL
         value: http://localhost:11434
       - key: OLLAMA_MODEL
         value: llama2
-    healthCheckPath: /api/health
-    autoDeploy: true 
+      - key: FLASK_ENV
+        value: production
+      - key: FLASK_DEBUG
+        value: false
+
+  # Frontend React App
+  - type: web
+    name: bfsi-frontend
+    env: static
+    plan: free
+    buildCommand: |
+      npm install
+      npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://bfsi-backend.onrender.com
+      - key: VITE_FIREBASE_API_KEY
+        sync: false
+      - key: VITE_FIREBASE_AUTH_DOMAIN
+        sync: false
+      - key: VITE_FIREBASE_PROJECT_ID
+        sync: false
+      - key: VITE_FIREBASE_STORAGE_BUCKET
+        sync: false
+      - key: VITE_FIREBASE_MESSAGING_SENDER_ID
+        sync: false
+      - key: VITE_FIREBASE_APP_ID
+        sync: false 

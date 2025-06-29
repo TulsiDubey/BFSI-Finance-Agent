@@ -20,10 +20,15 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
-# Configure CORS properly
+# Configure CORS properly for production
 CORS(app, resources={
     r"/api/*": {
-        "origins": ["http://localhost:3000", "http://127.0.0.1:3000"],
+        "origins": [
+            "http://localhost:3000", 
+            "http://127.0.0.1:3000",
+            "https://bfsi-frontend.onrender.com",
+            "https://*.onrender.com"
+        ],
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"]
     }
@@ -258,17 +263,35 @@ def provide_fallback_response(prompt):
 
 Ask me any specific question about these topics, and I'll provide detailed, actionable advice!"""
 
+@app.route('/', methods=['GET'])
+def root():
+    """Root endpoint for health checks"""
+    return jsonify({
+        "status": "healthy",
+        "message": "BFSI Finance Agent API is running",
+        "timestamp": datetime.now().isoformat()
+    }), 200
+
 @app.route('/api/health', methods=['GET'])
 def health_check():
-    """Health check endpoint"""
-    return jsonify({
-        'status': 'healthy',
-        'timestamp': datetime.now().isoformat(),
-        'services': {
-            'gemini': model is not None,
-            'ollama': True  # Always available as fallback
-        }
-    })
+    """Health check endpoint for monitoring"""
+    try:
+        # Check if AI model is available
+        ai_status = "available" if model else "unavailable"
+        
+        return jsonify({
+            "status": "healthy",
+            "timestamp": datetime.now().isoformat(),
+            "ai_model": ai_status,
+            "version": "1.0.0"
+        }), 200
+    except Exception as e:
+        logger.error(f"Health check failed: {e}")
+        return jsonify({
+            "status": "unhealthy",
+            "error": str(e),
+            "timestamp": datetime.now().isoformat()
+        }), 500
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
