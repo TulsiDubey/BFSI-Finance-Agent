@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: bfsi-financial-platform
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r backend/requirements.txt
+    startCommand: bash start.sh
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PORT
+        value: 10000
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: OLLAMA_BASE_URL
+        value: http://localhost:11434
+      - key: OLLAMA_MODEL
+        value: llama2
+    healthCheckPath: /api/health
+    autoDeploy: true 
