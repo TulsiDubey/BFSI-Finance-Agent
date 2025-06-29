@@ -1,0 +1,15 @@
+{
+    "name": "SecureLife Term Plan",
+    "type": "Term Insurance",
+    "description": "A reliable term life insurance plan to protect your family’s financial future.",
+    "benefits": [
+      "Coverage up to ₹1 crore",
+      "Tax benefits under Section 80C",
+      "Accidental death benefit included",
+      "Optional critical illness rider"
+    ],
+    "monthlyPremium": 1000,
+    "priority": "high",
+    "icon": "Shield",
+    "isFraudulent": false
+  }
