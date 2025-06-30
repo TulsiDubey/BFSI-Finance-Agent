@@ -332,11 +332,10 @@ python test_api.py
 - `POST /api/recommendations` - Get recommendations
 - `POST /api/investment/security-analysis` - Investment security analysis
 
-  Pictures:
+  Demo Picture of Dashboard:
   
-![Screenshot 2025-06-29 174249](https://github.com/user-atta![Screenshot 2025-06-29 172402](https://github.com/user-attachments/assets/fba89067-0713-4912-ad6b-ebf30a1c48df)
-chments/assets/1b4f6b22-3094-403c-9307-04aaa7379124)
-![Screenshot 2025-06-29 172830](https://github.com/user-attachments/assets/bb7d66c4-f044-4b57-8fd0-08592adf39c2)
+  
 
+![Screenshot 2025-06-29 172402](https://github.com/user-attachments/assets/ebc54e2e-68fd-4f83-b743-57198d1c799b)
 
 Built with ❤️ for secure financial services
