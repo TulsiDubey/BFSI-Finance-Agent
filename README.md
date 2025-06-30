@@ -333,12 +333,6 @@ python test_api.py
 - `POST /api/investment/security-analysis` - Investment security analysis
 
   Pictures:
-  
-  
-![Screenshot 2025-06-28 080501](https://github.com/user-attachments/assets/2a04235c-52c8-4c6f-9a3a-de9fa018b802)
-
-![Screenshot 2025-06-29 172402](https://github.com/user-attachments/asset![Scre![Screenshot 2025-06-29 172830](https://github.com/user-attachments/assets/5e93de10-8f08-4820-8bf6-826041e104f0)
-enshot 2025-06-29 174249](https://github.com/user-attachments/assets/b05b2918-eca6-4634-98a6-2d3da6244805)
-s/ebc54e2e-68fd-4f83-b743-57198d1c799b)
+  ![Screenshot 2025-06-29 172402](https://github.com/user-attachments/assets/69f27d51-ee80-45eb-b9ad-442c82806082)
 
 Built with ❤️ for secure financial services
